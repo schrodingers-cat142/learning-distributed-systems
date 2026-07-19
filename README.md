@@ -10,6 +10,9 @@ Running notes from reading DDIA, blog posts, and discussions. Each file is a sel
 | 2 | Retry Policies: Token Buckets and Circuit Breakers | [Brooker (2022)](https://brooker.co.za/blog/2022/02/28/retries.html) | 2026-07-15 | [002-retry-policies.md](002-retry-policies.md) |
 | 3 | Data Models: What Goes Around Comes Around | [Stonebraker & Pavlo (2024)](https://db.cs.cmu.edu/papers/2024/whatgoesaround-sigmodrec2024.pdf) | 2026-07-17 | [003-data-models-what-goes-around.md](003-data-models-what-goes-around.md) |
 | 4 | Data Store Selection Framework (AWS) | Derived from entry #3 | 2026-07-17 | [004-data-store-selection-framework.md](004-data-store-selection-framework.md) |
+| 5 | TAO: Facebook's Distributed Data Store | [Bronson et al. (USENIX ATC 2013)](https://www.usenix.org/system/files/conference/atc13/atc13-bronson.pdf) | 2026-07-19 | [005-facebook-tao.md](005-facebook-tao.md) |
+| 6 | Amazon Neptune: Managed Graph Database | [AWS Neptune Docs](https://docs.aws.amazon.com/neptune/latest/userguide/feature-overview.html) | 2026-07-19 | [006-amazon-neptune.md](006-amazon-neptune.md) |
+| 7 | CQRS and Event Sourcing | [Greg Young (2010)](https://cqrs.wordpress.com/wp-content/uploads/2010/11/cqrs_documents.pdf) + [Fowler: CQRS](https://martinfowler.com/bliki/CQRS.html) + [Fowler: Event Sourcing](https://martinfowler.com/eaaDev/EventSourcing.html) | 2026-07-19 | [007-cqrs-event-sourcing.md](007-cqrs-event-sourcing.md) |
 
 ## How These Connect
 
@@ -18,6 +21,18 @@ Designing a system
     │
     ├─► [Data Model Selection] ── What store do I use?       → Entry #3, #4
     │                              (relational vs. hierarchical vs. graph)
+    │
+    ├─► [Real-World Graph at Scale] ── How does FB serve      → Entry #5
+    │                                   a social graph?
+    │                                   (constrained API + caching + MySQL)
+    │
+    ├─► [General-Purpose Graph DB] ── When do you need       → Entry #6
+    │                                  arbitrary traversals?
+    │                                  (Neptune: ACID, flexible, slower)
+    │
+    ├─► [Architecture Patterns] ── How do I structure        → Entry #7
+    │                              reads vs. writes?
+    │                              (CQRS, Event Sourcing, eventual consistency)
     │
     └─► [Fault Tolerance] ── How do I handle failures?
             │
