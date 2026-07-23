@@ -13,6 +13,7 @@ Running notes from reading DDIA, blog posts, and discussions. Each file is a sel
 | 5 | TAO: Facebook's Distributed Data Store | [Bronson et al. (USENIX ATC 2013)](https://www.usenix.org/system/files/conference/atc13/atc13-bronson.pdf) | 2026-07-19 | [005-facebook-tao.md](005-facebook-tao.md) |
 | 6 | Amazon Neptune: Managed Graph Database | [AWS Neptune Docs](https://docs.aws.amazon.com/neptune/latest/userguide/feature-overview.html) | 2026-07-19 | [006-amazon-neptune.md](006-amazon-neptune.md) |
 | 7 | CQRS and Event Sourcing | [Greg Young (2010)](https://cqrs.wordpress.com/wp-content/uploads/2010/11/cqrs_documents.pdf) + [Fowler: CQRS](https://martinfowler.com/bliki/CQRS.html) + [Fowler: Event Sourcing](https://martinfowler.com/eaaDev/EventSourcing.html) | 2026-07-19 | [007-cqrs-event-sourcing.md](007-cqrs-event-sourcing.md) |
+| 8 | LSM Trees and Storage Engines | [LSM Survey — Luo & Carey (2019)](https://arxiv.org/pdf/1812.07527) | 2026-07-23 | [008-lsm-trees.md](008-lsm-trees.md) |
 
 ## How These Connect
 
@@ -33,6 +34,10 @@ Designing a system
     ├─► [Architecture Patterns] ── How do I structure        → Entry #7
     │                              reads vs. writes?
     │                              (CQRS, Event Sourcing, eventual consistency)
+    │
+    ├─► [Storage Internals] ── How do databases store       → Entry #8
+    │                           data on disk?
+    │                           (LSM trees, SSTables, compaction, Bloom filters)
     │
     └─► [Fault Tolerance] ── How do I handle failures?
             │
