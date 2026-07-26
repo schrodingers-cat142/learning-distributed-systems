@@ -18,6 +18,7 @@ Running notes from reading DDIA, blog posts, and discussions. Each file is a sel
 | 10 | Trie Memtables in Cassandra | [Lambov (DataStax, PVLDB 2022)](https://www.vldb.org/pvldb/vol15/p3359-lambov.pdf) | 2026-07-26 | [010-trie-memtables-cassandra.md](010-trie-memtables-cassandra.md) |
 | 11 | The Ubiquitous B-Tree | [Comer (Purdue, ACM Computing Surveys 1979)](https://web.archive.org/web/20170809145513id_/http://sites.fas.harvard.edu/~cs165/papers/comer.pdf) | 2026-07-26 | [011-b-trees.md](011-b-trees.md) |
 | 12 | B-Trees: Modern Deep Dive | [Torn Writes — transactional.blog (2025)](https://transactional.blog/blog/2025-torn-writes) + DDIA Ch. 3 | 2026-07-26 | [012-b-trees-modern.md](012-b-trees-modern.md) |
+| 13 | Vector Search: Graph Indexes and Billion-Scale Inverted Indexes | [HNSW — Malkov & Yashunin (2016)](https://arxiv.org/pdf/1603.09320) + [Revisiting Inverted Indices — Baranchuk, Babenko & Malkov (ECCV 2018)](https://arxiv.org/pdf/1802.02422) | 2026-07-26 | [013-vector-search-ann.md](013-vector-search-ann.md) |
 
 ## How These Connect
 
@@ -47,6 +48,12 @@ Designing a system
     │                           (B-trees: fundamentals)              → Entry #11
     │                           (B-trees: WAL, MVCC, buffer pool,
     │                            CoW, Bε-trees, SSD tradeoffs)     → Entry #12
+    │
+    ├─► [Similarity Search] ── How do I search by meaning       → Entry #13
+    │                           instead of keywords?
+    │                           (ANN: HNSW graphs for in-memory,
+    │                            IVF+PQ inverted indexes for
+    │                            billion-scale; hybrid w/ lexical)
     │
     └─► [Fault Tolerance] ── How do I handle failures?
             │
