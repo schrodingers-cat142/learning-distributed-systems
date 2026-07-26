@@ -16,6 +16,7 @@ Running notes from reading DDIA, blog posts, and discussions. Each file is a sel
 | 8 | LSM Trees and Storage Engines | [LSM Survey — Luo & Carey (2019)](https://arxiv.org/pdf/1812.07527) | 2026-07-23 | [008-lsm-trees.md](008-lsm-trees.md) |
 | 9 | Bigtable: Distributed Storage System | [Chang, Dean et al. (Google, OSDI 2006)](https://storage.googleapis.com/gweb-research2023-media/pubtools/4443.pdf) | 2026-07-26 | [009-bigtable.md](009-bigtable.md) |
 | 10 | Trie Memtables in Cassandra | [Lambov (DataStax, PVLDB 2022)](https://www.vldb.org/pvldb/vol15/p3359-lambov.pdf) | 2026-07-26 | [010-trie-memtables-cassandra.md](010-trie-memtables-cassandra.md) |
+| 11 | The Ubiquitous B-Tree | [Comer (Purdue, ACM Computing Surveys 1979)](https://web.archive.org/web/20170809145513id_/http://sites.fas.harvard.edu/~cs165/papers/comer.pdf) | 2026-07-26 | [011-b-trees.md](011-b-trees.md) |
 
 ## How These Connect
 
@@ -42,6 +43,7 @@ Designing a system
     │                           (LSM trees, SSTables, compaction, Bloom filters)
     │                           (Bigtable: full system architecture)
     │                           (Trie memtables: optimizing the memory layer)
+    │                           (B-trees: the read-optimized counterpart)
     │
     └─► [Fault Tolerance] ── How do I handle failures?
             │
