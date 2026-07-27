@@ -19,6 +19,7 @@ Running notes from reading DDIA, blog posts, and discussions. Each file is a sel
 | 11 | The Ubiquitous B-Tree | [Comer (Purdue, ACM Computing Surveys 1979)](https://web.archive.org/web/20170809145513id_/http://sites.fas.harvard.edu/~cs165/papers/comer.pdf) | 2026-07-26 | [011-b-trees.md](011-b-trees.md) |
 | 12 | B-Trees: Modern Deep Dive | [Torn Writes — transactional.blog (2025)](https://transactional.blog/blog/2025-torn-writes) + DDIA Ch. 3 | 2026-07-26 | [012-b-trees-modern.md](012-b-trees-modern.md) |
 | 13 | Vector Search: Graph Indexes and Billion-Scale Inverted Indexes | [HNSW — Malkov & Yashunin (2016)](https://arxiv.org/pdf/1603.09320) + [Revisiting Inverted Indices — Baranchuk, Babenko & Malkov (ECCV 2018)](https://arxiv.org/pdf/1802.02422) | 2026-07-26 | [013-vector-search-ann.md](013-vector-search-ann.md) |
+| 14 | The RUM Conjecture: Read, Update, Memory — Pick Two | [Athanassoulis et al. (EDBT 2016)](https://openproceedings.org/2016/conf/edbt/paper-12.pdf) | 2026-07-27 | [014-rum-conjecture.md](014-rum-conjecture.md) |
 
 ## How These Connect
 
@@ -48,6 +49,12 @@ Designing a system
     │                           (B-trees: fundamentals)              → Entry #11
     │                           (B-trees: WAL, MVCC, buffer pool,
     │                            CoW, Bε-trees, SSD tradeoffs)     → Entry #12
+    │                              │
+    │                              └─► [The Lens] ── Why can't one       → Entry #14
+    │                                   structure win at everything?
+    │                                   (RUM: optimize 2 of Read/
+    │                                    Update/Memory, pay on the 3rd —
+    │                                    ties #8, #11, #12, #13 together)
     │
     ├─► [Similarity Search] ── How do I search by meaning       → Entry #13
     │                           instead of keywords?
