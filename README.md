@@ -20,6 +20,7 @@ Running notes from reading DDIA, blog posts, and discussions. Each file is a sel
 | 12 | B-Trees: Modern Deep Dive | [Torn Writes — transactional.blog (2025)](https://transactional.blog/blog/2025-torn-writes) + DDIA Ch. 3 | 2026-07-26 | [012-b-trees-modern.md](012-b-trees-modern.md) |
 | 13 | Vector Search: Graph Indexes and Billion-Scale Inverted Indexes | [HNSW — Malkov & Yashunin (2016)](https://arxiv.org/pdf/1603.09320) + [Revisiting Inverted Indices — Baranchuk, Babenko & Malkov (ECCV 2018)](https://arxiv.org/pdf/1802.02422) | 2026-07-26 | [013-vector-search-ann.md](013-vector-search-ann.md) |
 | 14 | The RUM Conjecture: Read, Update, Memory — Pick Two | [Athanassoulis et al. (EDBT 2016)](https://openproceedings.org/2016/conf/edbt/paper-12.pdf) | 2026-07-27 | [014-rum-conjecture.md](014-rum-conjecture.md) |
+| 15 | Encoding, Schema Evolution, and Dataflow Between Services | DDIA Ch. 4 + [Troy Hunt: API versioning](https://www.troyhunt.com/your-api-versioning-is-wrong-which-is/) + [WSO2: Event-Driven Architecture](https://wso2.com/blogs/thesource/exploring-event-driven-architecture-a-beginners-guide-for-cloud-native-developers/) | 2026-07-27 | [015-encoding-and-dataflow.md](015-encoding-and-dataflow.md) |
 
 ## How These Connect
 
@@ -61,6 +62,13 @@ Designing a system
     │                           (ANN: HNSW graphs for in-memory,
     │                            IVF+PQ inverted indexes for
     │                            billion-scale; hybrid w/ lexical)
+    │
+    ├─► [Data on the Move] ── How do services encode and        → Entry #15
+    │                          exchange data as they evolve?
+    │                          (JSON/Protobuf/Avro, reader vs
+    │                           writer schemas; REST/RPC + API
+    │                           versioning; EDA, meshes, actors)
+    │                           builds on event sourcing         → Entry #7
     │
     └─► [Fault Tolerance] ── How do I handle failures?
             │
