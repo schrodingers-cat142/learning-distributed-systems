@@ -23,6 +23,7 @@ Running notes from reading DDIA, blog posts, and discussions. Each file is a sel
 | 15 | Encoding, Schema Evolution, and Dataflow Between Services | DDIA Ch. 4 + [Troy Hunt: API versioning](https://www.troyhunt.com/your-api-versioning-is-wrong-which-is/) + [WSO2: Event-Driven Architecture](https://wso2.com/blogs/thesource/exploring-event-driven-architecture-a-beginners-guide-for-cloud-native-developers/) | 2026-07-27 | [015-encoding-and-dataflow.md](015-encoding-and-dataflow.md) |
 | 16 | Single-Leader Replication: Fundamentals | DDIA Ch. 5 | 2026-07-29 | [016-single-leader-replication.md](016-single-leader-replication.md) |
 | 17 | Replication Logs: How Changes Are Shipped | DDIA Ch. 5 + [Evolution of Logical Replication — Kapila (2023)](https://amitkapila16.blogspot.com/2023/09/evolution-of-logical-replication.html) | 2026-07-29 | [017-replication-logs.md](017-replication-logs.md) |
+| 18 | Node Outages, Failover, and Split-Brain | DDIA Ch. 5 + [Leader Election vs Consensus](https://ocheselandrei.github.io/2022/06/01/leader-election-vs-consensus.html) + [GitHub Sept 2012](https://github.blog/news-insights/the-library/github-availability-this-week/) + [GitHub Dec 2012](https://github.blog/news-insights/the-library/downtime-last-saturday/) + [pg_auto_failover](https://tapoueh.org/blog/2021/11/an-introduction-to-the-pg_auto_failover-project/) | 2026-07-29 | [018-node-outages-failover-split-brain.md](018-node-outages-failover-split-brain.md) |
 
 ## How These Connect
 
@@ -78,10 +79,16 @@ Designing a system
     │                      semi-sync; backups vs replication;
     │                      adding followers without downtime)
     │       │
-    │       └─► [Replication Logs] ── What's actually in       → Entry #17
-    │              the change stream a leader ships?
-    │              (statement-based, WAL shipping, logical/
-    │               row-based binlog, change data capture)
+    │       ├─► [Replication Logs] ── What's actually in       → Entry #17
+    │       │      the change stream a leader ships?
+    │       │      (statement-based, WAL shipping, logical/
+    │       │       row-based binlog, change data capture)
+    │       │
+    │       └─► [Node Outages] ── What happens when nodes      → Entry #18
+    │              fail, and how does failover go wrong?
+    │              (catch-up recovery, failover steps,
+    │               split-brain, fencing, leader election
+    │               vs consensus, GitHub outages)
     │
     └─► [Fault Tolerance] ── How do I handle failures?
             │
