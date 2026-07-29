@@ -24,6 +24,7 @@ Running notes from reading DDIA, blog posts, and discussions. Each file is a sel
 | 16 | Single-Leader Replication: Fundamentals | DDIA Ch. 5 | 2026-07-29 | [016-single-leader-replication.md](016-single-leader-replication.md) |
 | 17 | Replication Logs: How Changes Are Shipped | DDIA Ch. 5 + [Evolution of Logical Replication — Kapila (2023)](https://amitkapila16.blogspot.com/2023/09/evolution-of-logical-replication.html) | 2026-07-29 | [017-replication-logs.md](017-replication-logs.md) |
 | 18 | Node Outages, Failover, and Split-Brain | DDIA Ch. 5 + [Leader Election vs Consensus](https://ocheselandrei.github.io/2022/06/01/leader-election-vs-consensus.html) + [GitHub Sept 2012](https://github.blog/news-insights/the-library/github-availability-this-week/) + [GitHub Dec 2012](https://github.blog/news-insights/the-library/downtime-last-saturday/) + [pg_auto_failover](https://tapoueh.org/blog/2021/11/an-introduction-to-the-pg_auto_failover-project/) | 2026-07-29 | [018-node-outages-failover-split-brain.md](018-node-outages-failover-split-brain.md) |
+| 19 | Object-Storage-Backed Databases and Zero-Disk Architecture | [Leader Election With S3 Conditional Writes — Morling (2024)](https://www.morling.dev/blog/leader-election-with-s3-conditional-writes/) + DDIA Ch. 5 | 2026-07-29 | [019-object-storage-databases-zda.md](019-object-storage-databases-zda.md) |
 
 ## How These Connect
 
@@ -84,11 +85,17 @@ Designing a system
     │       │      (statement-based, WAL shipping, logical/
     │       │       row-based binlog, change data capture)
     │       │
-    │       └─► [Node Outages] ── What happens when nodes      → Entry #18
-    │              fail, and how does failover go wrong?
-    │              (catch-up recovery, failover steps,
-    │               split-brain, fencing, leader election
-    │               vs consensus, GitHub outages)
+    │       ├─► [Node Outages] ── What happens when nodes      → Entry #18
+    │       │      fail, and how does failover go wrong?
+    │       │      (catch-up recovery, failover steps,
+    │       │       split-brain, fencing, leader election
+    │       │       vs consensus, GitHub outages)
+    │       │
+    │       └─► [Object-Storage DBs] ── What if the durable    → Entry #19
+    │              source of truth is S3, not local disk?
+    │              (CAS/conditional writes, S3 leader
+    │               election, tiered storage, zero-disk
+    │               architecture — relocates #16–#18's problems)
     │
     └─► [Fault Tolerance] ── How do I handle failures?
             │
