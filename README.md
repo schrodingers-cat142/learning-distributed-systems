@@ -22,6 +22,7 @@ Running notes from reading DDIA, blog posts, and discussions. Each file is a sel
 | 14 | The RUM Conjecture: Read, Update, Memory — Pick Two | [Athanassoulis et al. (EDBT 2016)](https://openproceedings.org/2016/conf/edbt/paper-12.pdf) | 2026-07-27 | [014-rum-conjecture.md](014-rum-conjecture.md) |
 | 15 | Encoding, Schema Evolution, and Dataflow Between Services | DDIA Ch. 4 + [Troy Hunt: API versioning](https://www.troyhunt.com/your-api-versioning-is-wrong-which-is/) + [WSO2: Event-Driven Architecture](https://wso2.com/blogs/thesource/exploring-event-driven-architecture-a-beginners-guide-for-cloud-native-developers/) | 2026-07-27 | [015-encoding-and-dataflow.md](015-encoding-and-dataflow.md) |
 | 16 | Single-Leader Replication: Fundamentals | DDIA Ch. 5 | 2026-07-29 | [016-single-leader-replication.md](016-single-leader-replication.md) |
+| 17 | Replication Logs: How Changes Are Shipped | DDIA Ch. 5 + [Evolution of Logical Replication — Kapila (2023)](https://amitkapila16.blogspot.com/2023/09/evolution-of-logical-replication.html) | 2026-07-29 | [017-replication-logs.md](017-replication-logs.md) |
 
 ## How These Connect
 
@@ -76,6 +77,11 @@ Designing a system
     │                     (single-leader model; sync/async/
     │                      semi-sync; backups vs replication;
     │                      adding followers without downtime)
+    │       │
+    │       └─► [Replication Logs] ── What's actually in       → Entry #17
+    │              the change stream a leader ships?
+    │              (statement-based, WAL shipping, logical/
+    │               row-based binlog, change data capture)
     │
     └─► [Fault Tolerance] ── How do I handle failures?
             │
