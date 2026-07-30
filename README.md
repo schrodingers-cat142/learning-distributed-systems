@@ -27,6 +27,7 @@ Running notes from reading DDIA, blog posts, and discussions. Each file is a sel
 | 19 | Object-Storage-Backed Databases and Zero-Disk Architecture | [Leader Election With S3 Conditional Writes — Morling (2024)](https://www.morling.dev/blog/leader-election-with-s3-conditional-writes/) + DDIA Ch. 5 | 2026-07-29 | [019-object-storage-databases-zda.md](019-object-storage-databases-zda.md) |
 | 20 | Problems with Replication Lag | DDIA Ch. 5 + [Eventually Consistent — Vogels (2009)](https://www.allthingsdistributed.com/2008/12/eventually_consistent.html) | 2026-07-30 | [020-replication-lag-problems.md](020-replication-lag-problems.md) |
 | 21 | Consistency Models: Session Guarantees, Baseball, and Quorums | [Eventually Consistent — Vogels (2009)](https://www.allthingsdistributed.com/2008/12/eventually_consistent.html) + [Session Guarantees — Terry et al. (Bayou, 1994)](https://csis.pace.edu/~marchese/CS865/Papers/SessionGuaranteesPDIS.pdf) + [Consistency Through Baseball — Terry (MSR, 2011)](https://www.microsoft.com/en-us/research/wp-content/uploads/2011/10/ConsistencyAndBaseballReport.pdf) | 2026-07-30 | [021-consistency-models-session-guarantees.md](021-consistency-models-session-guarantees.md) |
+| 22 | Multi-Leader Replication | DDIA Ch. 5 + [pglogical BDR — AWS](https://aws.amazon.com/blogs/database/postgresql-bi-directional-replication-using-pglogical/) + [If You Must Deploy Multi-Master — Hodges (2012)](https://scale-out-blog.blogspot.com/2012/04/if-you-must-deploy-multi-master.html) + [HBASE-7709](https://issues.apache.org/jira/browse/HBASE-7709) | 2026-07-30 | [022-multi-leader-replication.md](022-multi-leader-replication.md) |
 
 ## How These Connect
 
@@ -110,6 +111,11 @@ Designing a system
     │                       (client vs server-side; CAP; the four
     │                        session guarantees + version vectors;
     │                        baseball; N/W/R quorums, light touch)
+    │
+    ├─► [Multi-Leader] ── What if MANY nodes accept writes?    → Entry #22
+    │                      (active/active; when it's justified;
+    │                       write conflicts + resolution; circular/
+    │                       star/all-to-all topologies; loops)
     │
     └─► [Fault Tolerance] ── How do I handle failures?
             │
