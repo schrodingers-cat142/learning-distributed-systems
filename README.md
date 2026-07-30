@@ -26,6 +26,7 @@ Running notes from reading DDIA, blog posts, and discussions. Each file is a sel
 | 18 | Node Outages, Failover, and Split-Brain | DDIA Ch. 5 + [Leader Election vs Consensus](https://ocheselandrei.github.io/2022/06/01/leader-election-vs-consensus.html) + [GitHub Sept 2012](https://github.blog/news-insights/the-library/github-availability-this-week/) + [GitHub Dec 2012](https://github.blog/news-insights/the-library/downtime-last-saturday/) + [pg_auto_failover](https://tapoueh.org/blog/2021/11/an-introduction-to-the-pg_auto_failover-project/) | 2026-07-29 | [018-node-outages-failover-split-brain.md](018-node-outages-failover-split-brain.md) |
 | 19 | Object-Storage-Backed Databases and Zero-Disk Architecture | [Leader Election With S3 Conditional Writes — Morling (2024)](https://www.morling.dev/blog/leader-election-with-s3-conditional-writes/) + DDIA Ch. 5 | 2026-07-29 | [019-object-storage-databases-zda.md](019-object-storage-databases-zda.md) |
 | 20 | Problems with Replication Lag | DDIA Ch. 5 + [Eventually Consistent — Vogels (2009)](https://www.allthingsdistributed.com/2008/12/eventually_consistent.html) | 2026-07-30 | [020-replication-lag-problems.md](020-replication-lag-problems.md) |
+| 21 | Consistency Models: Session Guarantees, Baseball, and Quorums | [Eventually Consistent — Vogels (2009)](https://www.allthingsdistributed.com/2008/12/eventually_consistent.html) + [Session Guarantees — Terry et al. (Bayou, 1994)](https://csis.pace.edu/~marchese/CS865/Papers/SessionGuaranteesPDIS.pdf) + [Consistency Through Baseball — Terry (MSR, 2011)](https://www.microsoft.com/en-us/research/wp-content/uploads/2011/10/ConsistencyAndBaseballReport.pdf) | 2026-07-30 | [021-consistency-models-session-guarantees.md](021-consistency-models-session-guarantees.md) |
 
 ## How These Connect
 
@@ -103,6 +104,12 @@ Designing a system
     │              (read-your-writes, monotonic reads,
     │               consistent prefix reads; sticky routing,
     │               read-from-leader, version tracking)
+    │                  │
+    │                  └─► [Consistency Models] ── The formal    → Entry #21
+    │                       menu those anomalies map onto.
+    │                       (client vs server-side; CAP; the four
+    │                        session guarantees + version vectors;
+    │                        baseball; N/W/R quorums, light touch)
     │
     └─► [Fault Tolerance] ── How do I handle failures?
             │
