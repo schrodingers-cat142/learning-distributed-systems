@@ -25,6 +25,7 @@ Running notes from reading DDIA, blog posts, and discussions. Each file is a sel
 | 17 | Replication Logs: How Changes Are Shipped | DDIA Ch. 5 + [Evolution of Logical Replication — Kapila (2023)](https://amitkapila16.blogspot.com/2023/09/evolution-of-logical-replication.html) | 2026-07-29 | [017-replication-logs.md](017-replication-logs.md) |
 | 18 | Node Outages, Failover, and Split-Brain | DDIA Ch. 5 + [Leader Election vs Consensus](https://ocheselandrei.github.io/2022/06/01/leader-election-vs-consensus.html) + [GitHub Sept 2012](https://github.blog/news-insights/the-library/github-availability-this-week/) + [GitHub Dec 2012](https://github.blog/news-insights/the-library/downtime-last-saturday/) + [pg_auto_failover](https://tapoueh.org/blog/2021/11/an-introduction-to-the-pg_auto_failover-project/) | 2026-07-29 | [018-node-outages-failover-split-brain.md](018-node-outages-failover-split-brain.md) |
 | 19 | Object-Storage-Backed Databases and Zero-Disk Architecture | [Leader Election With S3 Conditional Writes — Morling (2024)](https://www.morling.dev/blog/leader-election-with-s3-conditional-writes/) + DDIA Ch. 5 | 2026-07-29 | [019-object-storage-databases-zda.md](019-object-storage-databases-zda.md) |
+| 20 | Problems with Replication Lag | DDIA Ch. 5 + [Eventually Consistent — Vogels (2009)](https://www.allthingsdistributed.com/2008/12/eventually_consistent.html) | 2026-07-30 | [020-replication-lag-problems.md](020-replication-lag-problems.md) |
 
 ## How These Connect
 
@@ -91,11 +92,17 @@ Designing a system
     │       │       split-brain, fencing, leader election
     │       │       vs consensus, GitHub outages)
     │       │
-    │       └─► [Object-Storage DBs] ── What if the durable    → Entry #19
-    │              source of truth is S3, not local disk?
-    │              (CAS/conditional writes, S3 leader
-    │               election, tiered storage, zero-disk
-    │               architecture — relocates #16–#18's problems)
+    │       ├─► [Object-Storage DBs] ── What if the durable    → Entry #19
+    │       │      source of truth is S3, not local disk?
+    │       │      (CAS/conditional writes, S3 leader
+    │       │       election, tiered storage, zero-disk
+    │       │       architecture — relocates #16–#18's problems)
+    │       │
+    │       └─► [Replication Lag] ── What anomalies does        → Entry #20
+    │              async replication cause, and how to fix?
+    │              (read-your-writes, monotonic reads,
+    │               consistent prefix reads; sticky routing,
+    │               read-from-leader, version tracking)
     │
     └─► [Fault Tolerance] ── How do I handle failures?
             │
