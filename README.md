@@ -30,6 +30,7 @@ Running notes from reading DDIA, blog posts, and discussions. Each file is a sel
 | 22 | Multi-Leader Replication | DDIA Ch. 5 + [pglogical BDR — AWS](https://aws.amazon.com/blogs/database/postgresql-bi-directional-replication-using-pglogical/) + [If You Must Deploy Multi-Master — Hodges (2012)](https://scale-out-blog.blogspot.com/2012/04/if-you-must-deploy-multi-master.html) + [HBASE-7709](https://issues.apache.org/jira/browse/HBASE-7709) | 2026-07-30 | [022-multi-leader-replication.md](022-multi-leader-replication.md) |
 | 23 | Local-First and Offline-First Software | DDIA (2nd ed.) + [Local-First Software — Ink & Switch (2019)](https://www.inkandswitch.com/essay/local-first/) + [Offline First — Feyerke (A List Apart, 2013)](https://alistapart.com/article/offline-first/) | 2026-08-01 | [023-local-first-offline-first.md](023-local-first-offline-first.md) |
 | 24 | Conflict Resolution: CRDTs and Operational Transformation | DDIA + [New Google Docs: Making collaboration fast (2010)](https://drive.googleblog.com/2010/09/whats-different-about-new-google-docs.html) + [How Figma's multiplayer tech works (2019)](https://www.figma.com/blog/how-figmas-multiplayer-technology-works/) | 2026-08-01 | [024-conflict-resolution-crdts-ot.md](024-conflict-resolution-crdts-ot.md) |
+| 25 | Sync Engines | DDIA (2nd ed.) + [A Map of Sync — Convex (2024)](https://stack.convex.dev/a-map-of-sync) + [Are sync engines the future? — Hagoel (2024)](https://dev.to/isaachagoel/are-sync-engines-the-future-of-web-applications-1bbi) + [Scaling the Linear Sync Engine (2023)](https://linear.app/now/scaling-the-linear-sync-engine) | 2026-08-01 | [025-sync-engines.md](025-sync-engines.md) |
 
 ## How These Connect
 
@@ -124,10 +125,16 @@ Designing a system
     │              (seven ideals; offline-first UX; CRDTs as
     │               the enabler; ownership vs the cloud)
     │                  │
-    │                  └─► [Conflict Resolution] ── How do        → Entry #24
-    │                       concurrent edits merge automatically?
-    │                       (OT vs CRDTs; Google Docs OT protocol;
-    │                        Figma LWW-per-property + frac. indexing)
+    │                  ├─► [Conflict Resolution] ── How do        → Entry #24
+    │                  │    concurrent edits merge automatically?
+    │                  │    (OT vs CRDTs; Google Docs OT protocol;
+    │                  │     Figma LWW-per-property + frac. indexing)
+    │                  │
+    │                  └─► [Sync Engines] ── How do you BUILD     → Entry #25
+    │                       local-first apps in practice?
+    │                       (local store as buffer; Convex's 9
+    │                        dimensions; server-authoritative vs
+    │                        decentralized; Linear/Replicache/Figma)
     │
     └─► [Fault Tolerance] ── How do I handle failures?
             │
