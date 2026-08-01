@@ -29,6 +29,7 @@ Running notes from reading DDIA, blog posts, and discussions. Each file is a sel
 | 21 | Consistency Models: Session Guarantees, Baseball, and Quorums | [Eventually Consistent — Vogels (2009)](https://www.allthingsdistributed.com/2008/12/eventually_consistent.html) + [Session Guarantees — Terry et al. (Bayou, 1994)](https://csis.pace.edu/~marchese/CS865/Papers/SessionGuaranteesPDIS.pdf) + [Consistency Through Baseball — Terry (MSR, 2011)](https://www.microsoft.com/en-us/research/wp-content/uploads/2011/10/ConsistencyAndBaseballReport.pdf) | 2026-07-30 | [021-consistency-models-session-guarantees.md](021-consistency-models-session-guarantees.md) |
 | 22 | Multi-Leader Replication | DDIA Ch. 5 + [pglogical BDR — AWS](https://aws.amazon.com/blogs/database/postgresql-bi-directional-replication-using-pglogical/) + [If You Must Deploy Multi-Master — Hodges (2012)](https://scale-out-blog.blogspot.com/2012/04/if-you-must-deploy-multi-master.html) + [HBASE-7709](https://issues.apache.org/jira/browse/HBASE-7709) | 2026-07-30 | [022-multi-leader-replication.md](022-multi-leader-replication.md) |
 | 23 | Local-First and Offline-First Software | DDIA (2nd ed.) + [Local-First Software — Ink & Switch (2019)](https://www.inkandswitch.com/essay/local-first/) + [Offline First — Feyerke (A List Apart, 2013)](https://alistapart.com/article/offline-first/) | 2026-08-01 | [023-local-first-offline-first.md](023-local-first-offline-first.md) |
+| 24 | Conflict Resolution: CRDTs and Operational Transformation | DDIA + [New Google Docs: Making collaboration fast (2010)](https://drive.googleblog.com/2010/09/whats-different-about-new-google-docs.html) + [How Figma's multiplayer tech works (2019)](https://www.figma.com/blog/how-figmas-multiplayer-technology-works/) | 2026-08-01 | [024-conflict-resolution-crdts-ot.md](024-conflict-resolution-crdts-ot.md) |
 
 ## How These Connect
 
@@ -122,6 +123,11 @@ Designing a system
     │              leader that owns its data?
     │              (seven ideals; offline-first UX; CRDTs as
     │               the enabler; ownership vs the cloud)
+    │                  │
+    │                  └─► [Conflict Resolution] ── How do        → Entry #24
+    │                       concurrent edits merge automatically?
+    │                       (OT vs CRDTs; Google Docs OT protocol;
+    │                        Figma LWW-per-property + frac. indexing)
     │
     └─► [Fault Tolerance] ── How do I handle failures?
             │
