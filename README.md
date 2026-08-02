@@ -31,6 +31,7 @@ Running notes from reading DDIA, blog posts, and discussions. Each file is a sel
 | 23 | Local-First and Offline-First Software | DDIA (2nd ed.) + [Local-First Software — Ink & Switch (2019)](https://www.inkandswitch.com/essay/local-first/) + [Offline First — Feyerke (A List Apart, 2013)](https://alistapart.com/article/offline-first/) | 2026-08-01 | [023-local-first-offline-first.md](023-local-first-offline-first.md) |
 | 24 | Conflict Resolution: CRDTs and Operational Transformation | DDIA + [New Google Docs: Making collaboration fast (2010)](https://drive.googleblog.com/2010/09/whats-different-about-new-google-docs.html) + [How Figma's multiplayer tech works (2019)](https://www.figma.com/blog/how-figmas-multiplayer-technology-works/) | 2026-08-01 | [024-conflict-resolution-crdts-ot.md](024-conflict-resolution-crdts-ot.md) |
 | 25 | Sync Engines | DDIA (2nd ed.) + [A Map of Sync — Convex (2024)](https://stack.convex.dev/a-map-of-sync) + [Are sync engines the future? — Hagoel (2024)](https://dev.to/isaachagoel/are-sync-engines-the-future-of-web-applications-1bbi) + [Scaling the Linear Sync Engine (2023)](https://linear.app/now/scaling-the-linear-sync-engine) | 2026-08-01 | [025-sync-engines.md](025-sync-engines.md) |
+| 26 | Eg-walker: Escaping the OT-vs-CRDT Tradeoff | [Collaborative Text Editing with Eg-walker — Gentle & Kleppmann (EuroSys 2025)](https://arxiv.org/pdf/2409.14252) | 2026-08-02 | [026-eg-walker.md](026-eg-walker.md) |
 
 ## How These Connect
 
@@ -129,6 +130,11 @@ Designing a system
     │                  │    concurrent edits merge automatically?
     │                  │    (OT vs CRDTs; Google Docs OT protocol;
     │                  │     Figma LWW-per-property + frac. indexing)
+    │                  │      │
+    │                  │      └─► [Eg-walker] ── Can one algorithm  → Entry #26
+    │                  │           have OT's low memory AND CRDT's
+    │                  │           robust merging? (event-graph replay
+    │                  │           + transient CRDT; critical versions)
     │                  │
     │                  └─► [Sync Engines] ── How do you BUILD     → Entry #25
     │                       local-first apps in practice?
