@@ -32,6 +32,7 @@ Running notes from reading DDIA, blog posts, and discussions. Each file is a sel
 | 24 | Conflict Resolution: CRDTs and Operational Transformation | DDIA + [New Google Docs: Making collaboration fast (2010)](https://drive.googleblog.com/2010/09/whats-different-about-new-google-docs.html) + [How Figma's multiplayer tech works (2019)](https://www.figma.com/blog/how-figmas-multiplayer-technology-works/) | 2026-08-01 | [024-conflict-resolution-crdts-ot.md](024-conflict-resolution-crdts-ot.md) |
 | 25 | Sync Engines | DDIA (2nd ed.) + [A Map of Sync — Convex (2024)](https://stack.convex.dev/a-map-of-sync) + [Are sync engines the future? — Hagoel (2024)](https://dev.to/isaachagoel/are-sync-engines-the-future-of-web-applications-1bbi) + [Scaling the Linear Sync Engine (2023)](https://linear.app/now/scaling-the-linear-sync-engine) | 2026-08-01 | [025-sync-engines.md](025-sync-engines.md) |
 | 26 | Eg-walker: Escaping the OT-vs-CRDT Tradeoff | [Collaborative Text Editing with Eg-walker — Gentle & Kleppmann (EuroSys 2025)](https://arxiv.org/pdf/2409.14252) | 2026-08-02 | [026-eg-walker.md](026-eg-walker.md) |
+| 27 | Leaderless Replication (Dynamo-style) | DDIA Ch. 5 + [Shared-Nothing Architectures — Colin Breck (2023)](https://blog.colinbreck.com/shared-nothing-architectures-for-server-replication-and-synchronization/) | 2026-08-03 | [027-leaderless-replication.md](027-leaderless-replication.md) |
 
 ## How These Connect
 
@@ -120,6 +121,12 @@ Designing a system
     │       │              (active/active; when it's justified;
     │       │               write conflicts + resolution; circular/
     │       │               star/all-to-all topologies; loops)
+    │       │
+    │       ├─► [Leaderless] ── What if there's NO leader and     → Entry #27
+    │       │      clients read/write many replicas at once?
+    │       │      (Dynamo-style; read repair / hinted handoff /
+    │       │       anti-entropy; N/W/R quorums + their limits;
+    │       │       request hedging, gray failures; multi-region)
     │       │
     │       └─► [Local-First] ── What if every DEVICE is a       → Entry #23
     │              leader that owns its data?
