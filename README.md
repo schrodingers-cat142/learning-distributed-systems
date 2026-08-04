@@ -34,6 +34,7 @@ Running notes from reading DDIA, blog posts, and discussions. Each file is a sel
 | 26 | Eg-walker: Escaping the OT-vs-CRDT Tradeoff | [Collaborative Text Editing with Eg-walker — Gentle & Kleppmann (EuroSys 2025)](https://arxiv.org/pdf/2409.14252) | 2026-08-02 | [026-eg-walker.md](026-eg-walker.md) |
 | 27 | Leaderless Replication (Dynamo-style) | DDIA Ch. 5 + [Shared-Nothing Architectures — Colin Breck (2023)](https://blog.colinbreck.com/shared-nothing-architectures-for-server-replication-and-synchronization/) | 2026-08-03 | [027-leaderless-replication.md](027-leaderless-replication.md) |
 | 28 | Time, Clocks, and Detecting Concurrent Writes | DDIA Ch. 5 + [Time, Clocks, and the Ordering of Events — Lamport (1978)](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/12/Time-Clocks-and-the-Ordering-of-Events-in-a-Distributed-System.pdf) + [Clocks and Causality — Manepalli (2022)](https://www.exhypothesi.com/clocks-and-causality/) | 2026-08-03 | [028-time-clocks-concurrent-writes.md](028-time-clocks-concurrent-writes.md) |
+| 29 | Dynamo to DynamoDB: The Complete Picture | [Dynamo — DeCandia et al. (SOSP 2007)](https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf) + [DynamoDB — Elhemali et al. (USENIX ATC 2022)](https://www.usenix.org/system/files/atc22-elhemali.pdf) + [Dynamo/DynamoDB/DSQL](https://brooker.co.za/blog/2025/08/15/dynamo-dynamodb-dsql.html) + [The DynamoDB paper — Brooker (2022)](https://brooker.co.za/blog/2022/07/12/dynamodb.html) | 2026-08-04 | [029-dynamo-to-dynamodb.md](029-dynamo-to-dynamodb.md) |
 
 ## How These Connect
 
@@ -129,11 +130,18 @@ Designing a system
     │       │       anti-entropy; N/W/R quorums + their limits;
     │       │       request hedging, gray failures; multi-region)
     │       │          │
-    │       │          └─► [Time & Clocks] ── How do you tell a   → Entry #28
-    │       │               concurrent write from a later one?
-    │       │               (Lamport happens-before + logical
-    │       │                clocks; vector clocks; version
-    │       │                vectors; siblings vs LWW)
+    │       │          ├─► [Time & Clocks] ── How do you tell a   → Entry #28
+    │       │          │    concurrent write from a later one?
+    │       │          │    (Lamport happens-before + logical
+    │       │          │     clocks; vector clocks; version
+    │       │          │     vectors; siblings vs LWW)
+    │       │          │
+    │       │          └─► [Dynamo → DynamoDB] ── How did the      → Entry #29
+    │       │               canonical leaderless store become a
+    │       │               single-leader managed product?
+    │       │               (2007 Dynamo internals; the pivot;
+    │       │                DynamoDB Paxos/partitions/MemDS/
+    │       │                throughput journey/durability)
     │       │
     │       └─► [Local-First] ── What if every DEVICE is a       → Entry #23
     │              leader that owns its data?
