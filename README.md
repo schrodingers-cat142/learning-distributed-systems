@@ -36,6 +36,7 @@ Running notes from reading DDIA, blog posts, and discussions. Each file is a sel
 | 28 | Time, Clocks, and Detecting Concurrent Writes | DDIA Ch. 5 + [Time, Clocks, and the Ordering of Events — Lamport (1978)](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/12/Time-Clocks-and-the-Ordering-of-Events-in-a-Distributed-System.pdf) + [Clocks and Causality — Manepalli (2022)](https://www.exhypothesi.com/clocks-and-causality/) | 2026-08-03 | [028-time-clocks-concurrent-writes.md](028-time-clocks-concurrent-writes.md) |
 | 29 | Dynamo to DynamoDB: The Complete Picture | [Dynamo — DeCandia et al. (SOSP 2007)](https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf) + [DynamoDB — Elhemali et al. (USENIX ATC 2022)](https://www.usenix.org/system/files/atc22-elhemali.pdf) + [Dynamo/DynamoDB/DSQL](https://brooker.co.za/blog/2025/08/15/dynamo-dynamodb-dsql.html) + [The DynamoDB paper — Brooker (2022)](https://brooker.co.za/blog/2022/07/12/dynamodb.html) | 2026-08-04 | [029-dynamo-to-dynamodb.md](029-dynamo-to-dynamodb.md) |
 | 30 | Sharding: Strategies, Multitenancy, and Hot Spots | DDIA Ch. 6 + [Sharding Postgres at Notion](https://www.notion.com/blog/sharding-postgres-at-notion) + [Consistent Hashing — Gryski](https://dgryski.medium.com/consistent-hashing-algorithmic-tradeoffs-ef6b8e2fcae8) + [Building S3 — Warfield (2023)](https://www.allthingsdistributed.com/2023/07/building-and-operating-a-pretty-big-storage-system.html) + [Things DBs Don't Do — Nile](https://www.thenile.dev/blog/things-dbs-dont-do) | 2026-08-06 | [030-sharding-strategies.md](030-sharding-strategies.md) |
+| 31 | Operating a Sharded System: Rebalancing, Routing, and Secondary Indexes | DDIA Ch. 6 + [ScyllaDB Safe Topology Changes on Raft (2024)](https://www.scylladb.com/2024/06/18/scylladbs-safe-topology-and-schema-changes-on-raft/) + [Sharding Postgres at Notion](https://www.notion.com/blog/sharding-postgres-at-notion) | 2026-08-06 | [031-sharding-operations.md](031-sharding-operations.md) |
 
 ## How These Connect
 
@@ -166,10 +167,16 @@ Designing a system
     │                        decentralized; Linear/Replicache/Figma)
     │
     ├─► [Sharding] ── How do I split data across nodes         → Entry #30
-    │                  when one machine isn't enough?
-    │                  (pros/cons; multitenancy + cell-based;
-    │                   key-range / hash / hash-range; consistent
-    │                   hashing algorithms; hot spots & decorrelation)
+    │       │          when one machine isn't enough?
+    │       │          (pros/cons; multitenancy + cell-based;
+    │       │           key-range / hash / hash-range; consistent
+    │       │           hashing algorithms; hot spots & decorrelation)
+    │       │
+    │       └─► [Sharding Operations] ── How do I RUN it once     → Entry #31
+    │              it's split? (automatic vs manual rebalancing;
+    │              request routing 3 ways; ZooKeeper/etcd/mongos
+    │              + ScyllaDB gossip→Raft; local vs global
+    │              secondary indexes)
     │
     └─► [Fault Tolerance] ── How do I handle failures?
             │
